@@ -11,7 +11,7 @@ const db = require("./app/models/db");
 const mysql = require("mysql");
 
 var corsOptions = {
-  origin: "http://localhost:8079"
+  origin: "http://localhost:8080"
 };
 
 app.use(cors(corsOptions));
