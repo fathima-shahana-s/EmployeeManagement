@@ -7,6 +7,15 @@ exports.create = (req, res) => {
     });
   }
 
+  // Check if any required field is empty
+  const requiredFields = ['employee_id', 'dept', 'name', 'email'];
+  const missingFields = requiredFields.filter(field => !req.body[field]);
+  if (missingFields.length > 0) {
+    return res.status(400).send({
+      message: "Fields cannot be empty: " + missingFields.join(', ')
+    });
+  }
+
   // Create an employee
   const employees = new Employees({
     employee_id: req.body.employee_id,
@@ -34,6 +43,7 @@ exports.findAll = (req, res) => {
   Employees.getAll((err, data) => {
     if (err)
       res.status(500).send({
+        status: res.statusCode,
         message:
           err.message || "Some error occurred while retrieving employee details."
       });
@@ -53,11 +63,7 @@ exports.findOne = (req, res) => {
           message: `Not found employee with id ${req.params.employee_id}.`
         });
       } else {
-<<<<<<< HEAD
-        if (isNaN(req.params.employee_id)){
-=======
         if (isNaN(req.params.employee_id)) {
->>>>>>> ac1513eaf4c031b4bdfa3f5c3bc97a74db579e47
           res.status(500).send({
             status: res.statusCode,
             message: "employee_id must be a number"
@@ -90,54 +96,26 @@ exports.update = (req, res) => {
     new Employees(req.body),
     (err, data) => {
       if (err) {
-<<<<<<< HEAD
-        if (isNaN(req.params.employee_id)){
-=======
         // console.log(isNaN(req.params.employee_id))
         console.log(isNaN("req.params.employee_id54345"))
         if (isNaN(req.params.employee_id)) {
->>>>>>> ac1513eaf4c031b4bdfa3f5c3bc97a74db579e47
           res.status(500).send({
             status: res.statusCode,
             message: "employee_id must be a number"
           });
-<<<<<<< HEAD
-        /*if (err.kind === "not_found") {
-=======
         }
         else if (err.kind === "not_found") {
->>>>>>> ac1513eaf4c031b4bdfa3f5c3bc97a74db579e47
           res.status(404).send({
             status: res.statusCode,
             message: `Not found employee with id ${req.params.employee_id}.`
-          });*/
+          });
         } else {
-<<<<<<< HEAD
-            if (err.kind === "not_found") {
-              res.status(404).send({
-                status: res.statusCode,
-                message: `Not found employee with id ${req.params.employee_id}.`
-              });
-          /*if (typeof req.params.employee_id === 'string' || req.params.employee_id instanceof String){
-            res.status(500).send({
-              status: res.statusCode,
-              message: "employee_id must be a number"
-            });*/
-          }
-          else{
-            res.status(500).send({
-              message: "Error updating employee with id " + req.params.employee_id
-            });
-
-          }
-=======
           
             res.status(500).send({
               message: "Error updating employee with id " + req.params.employee_id
             });
         
 
->>>>>>> ac1513eaf4c031b4bdfa3f5c3bc97a74db579e47
         }
       } else res.send({ status: res.statusCode, result: data });
     }
@@ -149,10 +127,19 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   Employees.remove(req.params.employee_id, (err, data) => {
     if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found employee with id ${req.params.employee_id}.`
-        });
+      console.log(isNaN("req.params.employee_id54345"))
+        if (isNaN(req.params.employee_id)) {
+          res.status(500).send({
+            status: res.statusCode,
+            message: "employee_id must be a number"
+          });
+        }
+        else if (err.kind === "not_found") {
+          res.status(404).send({
+            status: res.statusCode,
+            message: `Not found employee with id ${req.params.employee_id}.`
+          });
+      
       } else {
         res.status(500).send({
           message: "Could not delete employee with id " + req.params.employee_id
@@ -161,7 +148,3 @@ exports.delete = (req, res) => {
     } else res.send({ message: `Employee was deleted successfully!` });
   });
 };
-
-
-
-
