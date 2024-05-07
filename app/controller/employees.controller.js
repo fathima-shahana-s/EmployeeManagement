@@ -53,19 +53,23 @@ exports.findOne = (req, res) => {
           message: `Not found employee with id ${req.params.employee_id}.`
         });
       } else {
+<<<<<<< HEAD
         if (isNaN(req.params.employee_id)){
+=======
+        if (isNaN(req.params.employee_id)) {
+>>>>>>> ac1513eaf4c031b4bdfa3f5c3bc97a74db579e47
           res.status(500).send({
             status: res.statusCode,
             message: "employee_id must be a number"
           });
-        }else{
+        } else {
           res.status(500).send({
             message: "Error retrieving employee with id " + req.params.employee_id
           });
         }
-       
+
       }
-    } else res.send({ status: res.statusCode ,result:data });
+    } else res.send({ status: res.statusCode, result: data });
   });
 };
 
@@ -86,17 +90,29 @@ exports.update = (req, res) => {
     new Employees(req.body),
     (err, data) => {
       if (err) {
+<<<<<<< HEAD
         if (isNaN(req.params.employee_id)){
+=======
+        // console.log(isNaN(req.params.employee_id))
+        console.log(isNaN("req.params.employee_id54345"))
+        if (isNaN(req.params.employee_id)) {
+>>>>>>> ac1513eaf4c031b4bdfa3f5c3bc97a74db579e47
           res.status(500).send({
             status: res.statusCode,
             message: "employee_id must be a number"
           });
+<<<<<<< HEAD
         /*if (err.kind === "not_found") {
+=======
+        }
+        else if (err.kind === "not_found") {
+>>>>>>> ac1513eaf4c031b4bdfa3f5c3bc97a74db579e47
           res.status(404).send({
             status: res.statusCode,
             message: `Not found employee with id ${req.params.employee_id}.`
           });*/
         } else {
+<<<<<<< HEAD
             if (err.kind === "not_found") {
               res.status(404).send({
                 status: res.statusCode,
@@ -114,8 +130,16 @@ exports.update = (req, res) => {
             });
 
           }
+=======
+          
+            res.status(500).send({
+              message: "Error updating employee with id " + req.params.employee_id
+            });
+        
+
+>>>>>>> ac1513eaf4c031b4bdfa3f5c3bc97a74db579e47
         }
-      } else res.send({ status: res.statusCode ,result:data });
+      } else res.send({ status: res.statusCode, result: data });
     }
   );
 };
