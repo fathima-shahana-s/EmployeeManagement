@@ -8,14 +8,14 @@ exports.create = (req, res) => {
   }
 
   // Check if any required field is empty
-  const requiredFields = ['employee_id', 'dept', 'name', 'email'];
+  /*const requiredFields = ['employee_id', 'dept', 'name', 'email'];
   const missingFields = requiredFields.filter(field => !req.body[field]);
   if (missingFields.length > 0) {
     return res.status(400).send({
       message: "Fields cannot be empty: " + missingFields.join(', ')
     });
   }
-
+*/
   // Create an employee
   const employees = new Employees({
     employee_id: req.body.employee_id,
