@@ -10,7 +10,7 @@ exports.findAll = (req, res) => {
         message:
           err.message || "Some error occurred while retrieving Attendances."
       });
-      else res.send({status: res.statusCode, result: data });
+    else res.send({ status: res.statusCode, result: data });
   });
 };
 
