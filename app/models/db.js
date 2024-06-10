@@ -18,19 +18,6 @@ connection.connect(error => {
 });
 
 
-// TEST FUNCTION
-fun = async () => {
-  const result = await connection.query('SELECT * FROM employees', (err, res) => {
-    if (res.length) {
-      console.log(res[0]);
-      return;
-    }
-});}
-
-
-// CALLING TEST FUNCTION
-fun()
-// RowDataPacket { id: 1, name: 'jayakrishnan' }
 
 
 module.exports = connection;

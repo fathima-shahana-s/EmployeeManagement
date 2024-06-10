@@ -1,8 +1,7 @@
 const sql = require('./db')
-const { readFile, writeFile } = require('fs').promises;
 const { parseAsync } = require('json2csv');
 
-const CSVfun = function (employees) {
+const CSVfun = function () {
   // this.employee_id = employees.employee_id;
   // this.dept = employees.dept;
   // this.other_details = employees.other_details;   

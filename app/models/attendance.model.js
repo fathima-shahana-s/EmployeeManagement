@@ -16,7 +16,7 @@ const Attendance = function (attendance) {
 Attendance.create = (newAttendance, result) => {
   const sqlQuery = `INSERT INTO attendance SET ?`;
 
-  sql.query(sqlQuery, newAttendance, (err, res) => {
+  sql.query(sqlQuery, newAttendance, (err) => {
 
     if (err) {
       console.log("error: ", err);
