@@ -1,6 +1,5 @@
 const csv = require("../models/csv.model");
 
-
 // Retrieve Attendance monthly.
 exports.attndstatus = (req, res) => {
   
