@@ -147,7 +147,3 @@ exports.delete = (req, res) => {
     } else res.send({ message: `Employee was deleted successfully!` });
   });
 };
-
-
-
-
