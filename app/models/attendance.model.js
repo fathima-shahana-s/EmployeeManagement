@@ -1,8 +1,8 @@
-const sql = require('./db');
+const sql = require("./db");
 const currentDate = new Date();
 const year = currentDate.getFullYear();
-const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-const day = String(currentDate.getDate()).padStart(2, '0');
+const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+const day = String(currentDate.getDate()).padStart(2, "0");
 
 // const formattedDate = `${year}-${month}-${day}`;
 const Attendance = function (attendance) {
@@ -14,7 +14,7 @@ const Attendance = function (attendance) {
 
 // Add attendance record
 Attendance.create = (newAttendance, result) => {
-  const sqlQuery = `INSERT INTO attendance SET ?`;
+  const sqlQuery = "INSERT INTO attendance SET ?";
 
   sql.query(sqlQuery, newAttendance, (err) => {
 
@@ -31,7 +31,7 @@ Attendance.create = (newAttendance, result) => {
 
 // Delete attendance record (assuming deletion by attendance_id)
 Attendance.remove = (attendanceId, result) => {
-  const sqlQuery = `DELETE FROM attendance WHERE attendance_id = ?`;
+  const sqlQuery = "DELETE FROM attendance WHERE attendance_id = ?";
   const value = [attendanceId];
 
   sql.query(sqlQuery, value, (err, res) => {
@@ -52,7 +52,7 @@ Attendance.remove = (attendanceId, result) => {
 
 
 Attendance.getAll = (result) => {
-  let query = "SELECT * FROM attendance";
+  const query = "SELECT * FROM attendance";
 
 
   sql.query(query, (err, res) => {
@@ -67,7 +67,7 @@ Attendance.getAll = (result) => {
     //return result;
     //res.json(result)
     //result(null, res);
-    return;
+    //return;
   });
 };
 
@@ -82,7 +82,7 @@ Attendance.updateById = (attendance_id, attendance, result) => {
         return;
       }
 
-      if (res.affectedRows == 0) {
+      if (res.affectedRows === 0) {
         // not found Attendance with the id
         result({ kind: "not_found" }, null);
         return;

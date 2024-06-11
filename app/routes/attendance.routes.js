@@ -1,7 +1,7 @@
 module.exports = app => {
   const attendance = require("../controller/attendance.controller.js");
 
-  var router = require("express").Router();
+  const router = require("express").Router();
 
   // Retrieve all Attendance
   router.get("/", attendance.findAll);
@@ -15,6 +15,6 @@ module.exports = app => {
 
   router.delete("/:attendance_id", attendance.delete);
 
-  app.use('/api/attendance', router);
+  app.use("/api/attendance", router);
 };
 

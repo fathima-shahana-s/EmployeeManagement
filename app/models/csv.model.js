@@ -1,5 +1,5 @@
-const sql = require('./db');
-const { parseAsync } = require('json2csv');
+const sql = require("./db");
+const { parseAsync } = require("json2csv");
 
 const CSVfun = function () {};
 
@@ -35,7 +35,7 @@ CSVfun.write = async function (response, employee_id, month) {
 
       try {
         const csv = await parseAsync(data, { fields });
-        response.header('Content-Type', 'text/csv');
+        response.header("Content-Type", "text/csv");
         response.attachment("data.csv");
         response.send(csv);
       } catch (parseError) {
@@ -46,6 +46,6 @@ CSVfun.write = async function (response, employee_id, month) {
       }
     }
   );
-}
+};
 
 module.exports = CSVfun;
