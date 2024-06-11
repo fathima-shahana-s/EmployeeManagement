@@ -25,7 +25,7 @@ exports.findOne = (req, res) => {
       if (err.kind === "not_found") {
         res.status(404).send({
           status: res.statusCode,
-          message: "Not found Attendance with id " + req.params.attendance_id
+          message: `Not found Attendance with id ${req.params.attendance_id}`
         });
       } else {
         if(isNaN(req.params.attendance_id))
@@ -36,7 +36,7 @@ exports.findOne = (req, res) => {
           });
         } else{
           res.status(500).send({
-            message: "Error retrieving Attendance with id " + req.params.attendance_id
+            message: `Error retrieving Attendance with id ${req.params.attendance_id}`
 
           });
         }
@@ -99,11 +99,11 @@ exports.update = (req, res) => {
         else if (err.kind === "not_found") {
           res.status(404).send({
             status: res.statusCode,
-            message: "Not found Attendance with id " + req.params.attendance_id 
+            message: `Not found Attendance with id ${req.params.attendance_id}` 
           });
         } else {
           res.status(500).send({
-            message: "Error updating Attendance with id " + req.params.attendance_id
+            message: `Error updating Attendance with id ${req.params.attendance_id}`
           });
         }
       } else res.send({status: res.statusCode, result: data });
@@ -124,11 +124,11 @@ exports.delete = (req, res) => {
       else if (err.kind === "not_found") {
         res.status(404).send({
           status: res.statusCode,
-          message: "Not found Attendance with id " + req.params.attendance_id 
+          message: `Not found Attendance with id ${req.params.attendance_id}` 
         });
       } else {
         res.status(500).send({
-          message: "Could not delete attendance with id " + req.params.attendance_id
+          message: `Could not delete attendance with id ${req.params.attendance_id}`
         });
       }
     } else res.send({ message: "Attendance was deleted successfully!"});

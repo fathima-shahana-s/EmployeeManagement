@@ -68,7 +68,7 @@ exports.findOne = (req, res) => {
           });
         } else {
           res.status(500).send({
-            message: "Error retrieving employee with id " + req.params.employee_id
+            message: `Error retrieving employee with id ${req.params.employee_id}`
           });
         }
 
@@ -110,7 +110,7 @@ exports.update = (req, res) => {
         } else {
           
           res.status(500).send({
-            message: "Error updating employee with id " + req.params.employee_id
+            message: `Error updating employee with id ${req.params.employee_id}`
           });
         
 
@@ -140,7 +140,7 @@ exports.delete = (req, res) => {
       
       } else {
         res.status(500).send({
-          message: "Could not delete employee with id " + req.params.employee_id
+          message: `Could not delete employee with id ${req.params.employee_id}`
         });
       }
     } else res.send({ message: "Employee was deleted successfully!" });
