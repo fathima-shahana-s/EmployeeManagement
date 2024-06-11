@@ -37,12 +37,12 @@ export default [
       "space-unary-ops": "error",
 
       // ES6
-      //"arrow-spacing": "error",
-      //"no-confusing-arrow": "error",
-      //"no-duplicate-imports": "error",
-      //"object-shorthand": "off",
-      //"prefer-template": "warn",
-      //"complexity": ["error", 10],
+      "arrow-spacing": "error",
+      "no-confusing-arrow": "error",
+      "no-duplicate-imports": "error",
+      "object-shorthand": "off",
+      "prefer-template": "warn",
+      "complexity": ["error", 10],
     },
   },
   pluginJs.configs.recommended,
