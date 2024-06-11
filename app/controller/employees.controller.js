@@ -38,7 +38,6 @@ exports.create = (req, res) => {
 
 // Retrieve all employees from the database (with condition).
 exports.findAll = (req, res) => {
-  const title = req.query.title;
 
   Employees.getAll((err, data) => {
     if (err)
@@ -125,7 +124,7 @@ exports.update = (req, res) => {
 
 // Delete a user with the specified id in the request
 exports.delete = (req, res) => {
-  Employees.remove(req.params.employee_id, (err, data) => {
+  Employees.remove(req.params.employee_id, (err) => {
     if (err) {
       console.log(isNaN("req.params.employee_id54345"))
         if (isNaN(req.params.employee_id)) {

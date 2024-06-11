@@ -12,7 +12,7 @@ const Employees = function(employees) {
   Employees.create = (newemployees, result) => {
     const sqlQuery = 'INSERT INTO employees SET ?';
 
-    sql.query(sqlQuery, newemployees, (err,res) => {
+    sql.query(sqlQuery, newemployees, (err) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

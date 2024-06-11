@@ -1,11 +1,10 @@
 const csv = require("../models/csv.model");
 
-
 // Retrieve Attendance monthly.
 exports.attndstatus = (req, res) => {
   
-  employee_id = req.query.employee_id
-  month = req.query.month
+  var employee_id = req.query.employee_id
+  var month = req.query.month
 
   if (employee_id == undefined || month == undefined) {
     res.status(404).send({
