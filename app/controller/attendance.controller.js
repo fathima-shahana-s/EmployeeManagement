@@ -2,7 +2,7 @@ const Attendance = require("../models/attendance.model");
 
 
 // Retrieve all Attendance from the database (with condition).
-exports.findAll = (req, res) => {
+exports.findAll = (_req, res) => {
   Attendance.getAll((err, data) => {
     if (err)
       res.status(500).send({
@@ -110,7 +110,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Attendance.remove(req.params.attendance_id, (err, data) => {
+  Attendance.remove(req.params.attendance_id, (err) => {
     if (err) {
       console.log(isNaN("req.params.attendance_id54345"))
          if (isNaN(req.params.attendance_id)) {
