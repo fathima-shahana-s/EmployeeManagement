@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const dbConfig = require("../config/db.config.js");
 
 
-console.log("haii")
+console.log("haii");
 // Create a connection to the database
 const connection = mysql.createConnection({
   host: dbConfig.HOST,

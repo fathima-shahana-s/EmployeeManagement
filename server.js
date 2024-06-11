@@ -2,14 +2,12 @@ const express = require("express");
 
 const cors = require("cors");
 const EmployeesRoutes = require("./app/routes/employees.routes");
-const AttendanceRoutes = require("./app/routes/attendance.routes")
+const AttendanceRoutes = require("./app/routes/attendance.routes");
 
 const app = express();
 
-
-
-var corsOptions = {
-  origin: "*"
+const corsOptions = {
+  origin: "*",
 };
 
 app.use(cors(corsOptions));
@@ -20,8 +18,8 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/employee", EmployeesRoutes)
-app.use("/attendance", AttendanceRoutes)
+app.use("/employee", EmployeesRoutes);
+app.use("/attendance", AttendanceRoutes);
 // simple route
 app.get("/", async (req, res) => {
   // const result = await db.query('SELECT * FROM name');
@@ -40,7 +38,7 @@ require("./app/routes/csv.routes")(app);
 
 // set port, listen for requests
 
-const PORT =process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

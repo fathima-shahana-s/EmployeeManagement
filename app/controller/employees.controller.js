@@ -27,12 +27,12 @@ exports.create = (req, res) => {
 
   // Save employee in the database
   Employees.create(employees, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Employee."
+    if (err) {
+      return res.status(500).send({
+        message: err.message || "Some error occurred while creating the Employee."
       });
-    else res.send(data);
+    }
+    res.send(data);
   });
 };
 
@@ -40,21 +40,20 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
 
   Employees.getAll((err, data) => {
-    if (err)
-      res.status(500).send({
-        status: res.statusCode,
-        message:
-          err.message || "Some error occurred while retrieving employee details."
+    if (err) {
+      return res.status(500).send({
+        message:err.message || "Some error occurred while retrieving employee details."
       });
-    else res.send(data);
+    }
+    res.send(data);
   });
 };
 
 // Find a single employee with a id
 exports.findOne = (req, res) => {
   Employees.findById(req.params.employee_id, (err, data) => {
-    console.log("printing data")
-    console.log(data)
+    console.log("printing data");
+    console.log(data);
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -96,7 +95,7 @@ exports.update = (req, res) => {
     (err, data) => {
       if (err) {
         // console.log(isNaN(req.params.employee_id))
-        console.log(isNaN("req.params.employee_id54345"))
+        console.log(isNaN("req.params.employee_id54345"));
         if (isNaN(req.params.employee_id)) {
           res.status(500).send({
             status: res.statusCode,
@@ -110,9 +109,9 @@ exports.update = (req, res) => {
           });
         } else {
           
-            res.status(500).send({
-              message: "Error updating employee with id " + req.params.employee_id
-            });
+          res.status(500).send({
+            message: "Error updating employee with id " + req.params.employee_id
+          });
         
 
         }
@@ -126,24 +125,24 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   Employees.remove(req.params.employee_id, (err) => {
     if (err) {
-      console.log(isNaN("req.params.employee_id54345"))
-        if (isNaN(req.params.employee_id)) {
-          res.status(500).send({
-            status: res.statusCode,
-            message: "employee_id must be a number"
-          });
-        }
-        else if (err.kind === "not_found") {
-          res.status(404).send({
-            status: res.statusCode,
-            message: `Not found employee with id ${req.params.employee_id}.`
-          });
+      console.log(isNaN("req.params.employee_id54345"));
+      if (isNaN(req.params.employee_id)) {
+        res.status(500).send({
+          status: res.statusCode,
+          message: "employee_id must be a number"
+        });
+      }
+      else if (err.kind === "not_found") {
+        res.status(404).send({
+          status: res.statusCode,
+          message: `Not found employee with id ${req.params.employee_id}.`
+        });
       
       } else {
         res.status(500).send({
           message: "Could not delete employee with id " + req.params.employee_id
         });
       }
-    } else res.send({ message: `Employee was deleted successfully!` });
+    } else res.send({ message: "Employee was deleted successfully!" });
   });
 };
