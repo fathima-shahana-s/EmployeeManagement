@@ -1,6 +1,5 @@
 const Attendance = require("../models/attendance.model");
 
-
 // Retrieve all Attendance from the database (with condition).
 exports.findAll = (_req, res) => {
   Attendance.getAll((err, data) => {
@@ -10,14 +9,12 @@ exports.findAll = (_req, res) => {
         message:
           err.message || "Some error occurred while retrieving Attendances.",
       });
-    }
-    else res.send({ status: res.statusCode, result: data });
+    } else res.send({ status: res.statusCode, result: data });
   });
 };
 
 // Find a single Attendance with a id
 exports.findOne = (req, res) => {
-
   Attendance.findById(req.params.attendance_id, (err, data) => {
     console.log("printing data");
     console.log(data);
@@ -27,19 +24,16 @@ exports.findOne = (req, res) => {
           status: res.statusCode,
           message: `Not found Attendance with id ${req.params.attendance_id}`,
         });
+      } else if (isNaN(req.params.attendance_id)) {
+        res.status(500).send({
+          status: res.statusCode,
+          message: "attendance_id must be a number",
+        });
       } else {
-        if(isNaN(req.params.attendance_id))
-        {
-          res.status(500).send({
-            status: res.statusCode,
-            message: "attendance_id must be a number",
-          });
-        } else{
-          res.status(500).send({
-            message: `Error retrieving Attendance with id ${req.params.attendance_id}`,
+        res.status(500).send({
+          message: `Error retrieving Attendance with id ${req.params.attendance_id}`,
 
-          });
-        }
+        });
       }
     } else res.send({ status: res.statusCode, result: data});
   });
@@ -51,8 +45,6 @@ exports.create = (req, res) => {
       message: "Content can not be empty!",
     });
   }
-
-
   const attendance = new Attendance({
     attendance_id: req.body.attendance_id,
     employee_id: req.body.employee_id,
@@ -66,8 +58,7 @@ exports.create = (req, res) => {
         message:
           err.message || "Some error occurred while creating the Attendance.",
       });
-    }
-    else res.send({status: res.statusCode, result: data });
+    } else res.send({status: res.statusCode, result: data });
   });
 };
 
@@ -93,8 +84,7 @@ exports.update = (req, res) => {
             status: res.statusCode,
             message: "attendance_id must be a number",
           });
-        }
-        else if (err.kind === "not_found") {
+        } else if (err.kind === "not_found") {
           res.status(404).send({
             status: res.statusCode,
             message: `Not found Attendance with id ${req.params.attendance_id}`,
@@ -118,8 +108,7 @@ exports.delete = (req, res) => {
           status: res.statusCode,
           message: "attendance_id must be a number",
         });
-      }
-      else if (err.kind === "not_found") {
+      } else if (err.kind === "not_found") {
         res.status(404).send({
           status: res.statusCode,
           message: `Not found Attendance with id ${req.params.attendance_id}`,

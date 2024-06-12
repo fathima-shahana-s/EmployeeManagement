@@ -15,9 +15,7 @@ const Attendance = function (attendance) {
 // Add attendance record
 Attendance.create = (newAttendance, result) => {
   const sqlQuery = "INSERT INTO attendance SET ?";
-
   sql.query(sqlQuery, newAttendance, (err) => {
-
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -50,10 +48,8 @@ Attendance.remove = (attendanceId, result) => {
   });
 };
 
-
 Attendance.getAll = (result) => {
   const query = "SELECT * FROM attendance";
-
 
   sql.query(query, (err, res) => {
     if (err) {
@@ -111,25 +107,10 @@ Attendance.findById = (attendance_id, result) => {
   });
 };
 
-
 module.exports = Attendance;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // =======
 // const sql = require("./db");
-
 // // constructor
 // const Attendance = function(attendance) {
 //   this.employee_id = attendance.employee_id;
@@ -137,7 +118,6 @@ module.exports = Attendance;
 //   this.date = attendance.date;
 //   this.status = attendance.status;
 // };
-
 
 // Attendance.updateById = (employee_id, attendance, result) => {
 //   sql.query(
@@ -162,22 +142,8 @@ module.exports = Attendance;
 //   );
 // };
 
-
 // module.exports = Attendance;
 // >>>>>>> 973f93d99cf47d4d6df6111484e4bb65f53cb898
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // // =======
 // // const sql = require("./db");
@@ -189,7 +155,6 @@ module.exports = Attendance;
 // //   this.date = attendance.date;
 // //   this.status = attendance.status;
 // // };
-
 
 // // Attendance.findById = (emploee_id, result) => {
 // //   sql.query(`SELECT * FROM attendance WHERE employee_id = ${employee_id}`, (err, res) => {

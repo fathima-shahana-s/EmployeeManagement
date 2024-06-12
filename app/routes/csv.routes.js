@@ -7,5 +7,4 @@ module.exports = app => {
   router.get("/", csv.attndstatus);
 
   app.use("/api/getcsv", router);
-
 };

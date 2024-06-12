@@ -27,7 +27,6 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to employee management application." });
 });
 
-
 require("./app/routes/employees.routes")(app);
 
 require("./app/routes/attendance.routes")(app);

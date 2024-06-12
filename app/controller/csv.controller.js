@@ -15,7 +15,7 @@ exports.attndstatus = (req, res) => {
   csv.write(res, employee_id, month, (err, data) => {
     if (err) {
       res.status(500).send({
-        message:err.message || "Some error occurred while retrieving Attendance status.",
+        message: err.message || "Some error occurred while retrieving Attendance status.",
       });
     }
     res.send(data);

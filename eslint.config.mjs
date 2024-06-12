@@ -28,7 +28,6 @@ export default [
       "default-case": "error",
       "template-curly-spacing": ["error", "never"],
 
-      //"consistent-return": "error", // Enforces consistent return statements
       "require-await": "error", // Disallows async functions which have no await expression
       "no-trailing-spaces": "error", // Disallow trailing whitespace at the end of lines
       "comma-dangle": ["error", "always-multiline"], // Require or disallow trailing commas
@@ -40,6 +39,22 @@ export default [
       "space-in-parens": "error",
       "space-infix-ops": "error",
       "space-unary-ops": "error",
+
+      "brace-style": ["error", 
+                      "1tbs", 
+                      { "allowSingleLine": true }], // Enforces one true brace style
+      "comma-spacing": ["error", 
+                       { "before": false, "after": true }], // Enforces consistent spacing before and after commas
+      "key-spacing": ["error", 
+                     { "beforeColon": false, "afterColon": true }], // Enforces consistent spacing between keys and values in object literal properties
+      "keyword-spacing": ["error", 
+                         { "before": true, "after": true }], // Enforces consistent spacing before and after keywords
+      "no-lonely-if": "error", // Disallows if statements as the only statement in else blocks
+      "no-multiple-empty-lines": ["warn", 
+                                 { "max": 1, 
+                                   "maxEOF": 1 }], // Disallows multiple empty lines
+      "padded-blocks": ["warn", 
+                       "never"], // Disallows padding within blocks
 
       // ES6
       "arrow-spacing": "error",

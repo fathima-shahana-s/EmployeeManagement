@@ -24,14 +24,14 @@ Employees.create = (newemployees, result) => {
 
 Employees.getAll = (result) => {
   const query = "SELECT * FROM employees";
-  sql.query(query,(err, res) => {
+  sql.query(query, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
     console.log("employees: ", res);
-    result(null,res);
+    result(null, res);
     // result()
     // return result;
     // res.json(result)

@@ -38,11 +38,10 @@ exports.create = (req, res) => {
 
 // Retrieve all employees from the database (with condition).
 exports.findAll = (req, res) => {
-
   Employees.getAll((err, data) => {
     if (err) {
       return res.status(500).send({
-        message:err.message || "Some error occurred while retrieving employee details.",
+        message: err.message || "Some error occurred while retrieving employee details.",
       });
     }
     res.send(data);
@@ -60,23 +59,19 @@ exports.findOne = (req, res) => {
           status: res.statusCode,
           message: `Not found employee with id ${req.params.employee_id}.`,
         });
+      } else if (isNaN(req.params.employee_id)) {
+        res.status(500).send({
+          status: res.statusCode,
+          message: "employee_id must be a number",
+        });
       } else {
-        if (isNaN(req.params.employee_id)) {
-          res.status(500).send({
-            status: res.statusCode,
-            message: "employee_id must be a number",
-          });
-        } else {
-          res.status(500).send({
-            message: `Error retrieving employee with id ${req.params.employee_id}`,
-          });
-        }
-
+        res.status(500).send({
+          message: `Error retrieving employee with id ${req.params.employee_id}`,
+        });
       }
     } else res.send({ status: res.statusCode, result: data });
   });
 };
-
 
 // Update a single employee with a id
 exports.update = (req, res) => {
@@ -101,8 +96,7 @@ exports.update = (req, res) => {
             status: res.statusCode,
             message: "employee_id must be a number",
           });
-        }
-        else if (err.kind === "not_found") {
+        } else if (err.kind === "not_found") {
           res.status(404).send({
             status: res.statusCode,
             message: `Not found employee with id ${req.params.employee_id}.`,
@@ -111,13 +105,11 @@ exports.update = (req, res) => {
           res.status(500).send({
             message: `Error updating employee with id ${req.params.employee_id}`,
           });
-
         }
       } else res.send({ status: res.statusCode, result: data });
     },
   );
 };
-
 
 // Delete a user with the specified id in the request
 exports.delete = (req, res) => {
@@ -129,8 +121,7 @@ exports.delete = (req, res) => {
           status: res.statusCode,
           message: "employee_id must be a number",
         });
-      }
-      else if (err.kind === "not_found") {
+      } else if (err.kind === "not_found") {
         res.status(404).send({
           status: res.statusCode,
           message: `Not found employee with id ${req.params.employee_id}.`,
