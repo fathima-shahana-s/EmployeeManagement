@@ -14,10 +14,10 @@ module.exports = app => {
 
   // Update a Employees with id
   router.put("/:employee_id", employees.update);
-  
+
   // Delete a employee with id
   router.delete("/:employee_id", employees.delete);
-  
+
   app.use("/api/employee", router);
 
 };

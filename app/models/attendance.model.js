@@ -9,7 +9,7 @@ const Attendance = function (attendance) {
   this.attendance_id = attendance.attendance_id;
   this.employee_id = attendance.employee_id;
   this.date = `${year}-${month}-${day}`;
-  this.status = attendance.status; 
+  this.status = attendance.status;
 };
 
 // Add attendance record
@@ -90,7 +90,7 @@ Attendance.updateById = (attendance_id, attendance, result) => {
 
       console.log("updated attendance: ", { attendance_id: attendance_id, ...attendance });
       result(null, { attendance_id: attendance_id, ...attendance });
-    }
+    },
   );
 };
 

@@ -3,7 +3,7 @@ const Employees = require("../models/employees.model");
 exports.create = (req, res) => {
   if (!req.body) {
     res.status(400).send({
-      message: "Content can not be empty!"
+      message: "Content can not be empty!",
     });
   }
 
@@ -29,7 +29,7 @@ exports.create = (req, res) => {
   Employees.create(employees, (err, data) => {
     if (err) {
       return res.status(500).send({
-        message: err.message || "Some error occurred while creating the Employee."
+        message: err.message || "Some error occurred while creating the Employee.",
       });
     }
     res.send(data);
@@ -42,7 +42,7 @@ exports.findAll = (req, res) => {
   Employees.getAll((err, data) => {
     if (err) {
       return res.status(500).send({
-        message:err.message || "Some error occurred while retrieving employee details."
+        message:err.message || "Some error occurred while retrieving employee details.",
       });
     }
     res.send(data);
@@ -58,17 +58,17 @@ exports.findOne = (req, res) => {
       if (err.kind === "not_found") {
         res.status(404).send({
           status: res.statusCode,
-          message: `Not found employee with id ${req.params.employee_id}.`
+          message: `Not found employee with id ${req.params.employee_id}.`,
         });
       } else {
         if (isNaN(req.params.employee_id)) {
           res.status(500).send({
             status: res.statusCode,
-            message: "employee_id must be a number"
+            message: "employee_id must be a number",
           });
         } else {
           res.status(500).send({
-            message: `Error retrieving employee with id ${req.params.employee_id}`
+            message: `Error retrieving employee with id ${req.params.employee_id}`,
           });
         }
 
@@ -83,7 +83,7 @@ exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {
     res.status(400).send({
-      message: "Content can not be empty!"
+      message: "Content can not be empty!",
     });
   }
 
@@ -99,24 +99,22 @@ exports.update = (req, res) => {
         if (isNaN(req.params.employee_id)) {
           res.status(500).send({
             status: res.statusCode,
-            message: "employee_id must be a number"
+            message: "employee_id must be a number",
           });
         }
         else if (err.kind === "not_found") {
           res.status(404).send({
             status: res.statusCode,
-            message: `Not found employee with id ${req.params.employee_id}.`
+            message: `Not found employee with id ${req.params.employee_id}.`,
           });
         } else {
-          
           res.status(500).send({
-            message: `Error updating employee with id ${req.params.employee_id}`
+            message: `Error updating employee with id ${req.params.employee_id}`,
           });
-        
 
         }
       } else res.send({ status: res.statusCode, result: data });
-    }
+    },
   );
 };
 
@@ -129,18 +127,17 @@ exports.delete = (req, res) => {
       if (isNaN(req.params.employee_id)) {
         res.status(500).send({
           status: res.statusCode,
-          message: "employee_id must be a number"
+          message: "employee_id must be a number",
         });
       }
       else if (err.kind === "not_found") {
         res.status(404).send({
           status: res.statusCode,
-          message: `Not found employee with id ${req.params.employee_id}.`
+          message: `Not found employee with id ${req.params.employee_id}.`,
         });
-      
       } else {
         res.status(500).send({
-          message: `Could not delete employee with id ${req.params.employee_id}`
+          message: `Could not delete employee with id ${req.params.employee_id}`,
         });
       }
     } else res.send({ message: "Employee was deleted successfully!" });

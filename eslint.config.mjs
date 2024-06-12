@@ -30,6 +30,8 @@ export default [
 
       //"consistent-return": "error", // Enforces consistent return statements
       "require-await": "error", // Disallows async functions which have no await expression
+      "no-trailing-spaces": "error", // Disallow trailing whitespace at the end of lines
+      "comma-dangle": ["error", "always-multiline"], // Require or disallow trailing commas
 
       // Enhance Readability
       "indent": ["warn", 2, { "SwitchCase": 1 }],

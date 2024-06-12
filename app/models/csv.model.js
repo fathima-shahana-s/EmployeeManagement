@@ -6,7 +6,7 @@ const CSVfun = function () {};
 CSVfun.write = function (response, employee_id, month) {
   const query = sql.format(
     "SELECT e.employee_id, e.name AS employee_name, DATE_FORMAT(a.date, '%Y-%m') AS month, SUM(CASE WHEN a.status = 'present' THEN 1 ELSE 0 END) AS present_count, SUM(CASE WHEN a.status = 'absent' THEN 1 ELSE 0 END) AS absent_count FROM attendance a INNER JOIN employees e ON a.employee_id = e.employee_id GROUP BY e.employee_id HAVING month = ?;",
-    [month]
+    [month],
   );
 
   console.log(query);
@@ -18,7 +18,7 @@ CSVfun.write = function (response, employee_id, month) {
       if (err) {
         console.log("error: ", err);
         response.status(500).send({
-          message: "Some error occurred while retrieving attendance data."
+          message: "Some error occurred while retrieving attendance data.",
         });
         return;
       }
@@ -30,7 +30,7 @@ CSVfun.write = function (response, employee_id, month) {
         "employee_name",
         "month",
         "present_count",
-        "absent_count"
+        "absent_count",
       ];
 
       try {
@@ -41,10 +41,10 @@ CSVfun.write = function (response, employee_id, month) {
       } catch (parseError) {
         console.error(parseError);
         response.status(500).send({
-          message: "Error converting data to CSV format."
+          message: "Error converting data to CSV format.",
         });
       }
-    }
+    },
   );
 };
 
