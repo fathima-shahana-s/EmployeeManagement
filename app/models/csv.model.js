@@ -3,7 +3,7 @@ const { parseAsync } = require("json2csv");
 
 const CSVfun = function () {};
 
-CSVfun.write = async function (response, employee_id, month) {
+CSVfun.write = function (response, employee_id, month) {
   const query = sql.format(
     "SELECT e.employee_id, e.name AS employee_name, DATE_FORMAT(a.date, '%Y-%m') AS month, SUM(CASE WHEN a.status = 'present' THEN 1 ELSE 0 END) AS present_count, SUM(CASE WHEN a.status = 'absent' THEN 1 ELSE 0 END) AS absent_count FROM attendance a INNER JOIN employees e ON a.employee_id = e.employee_id GROUP BY e.employee_id HAVING month = ?;",
     [month]

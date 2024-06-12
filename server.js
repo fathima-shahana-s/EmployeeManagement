@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/employee", EmployeesRoutes);
 app.use("/attendance", AttendanceRoutes);
 // simple route
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
   // const result = await db.query('SELECT * FROM name');
   // await res.json(result.recordset);
   res.json({ message: "Welcome to employee management application." });

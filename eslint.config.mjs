@@ -28,6 +28,9 @@ export default [
       "default-case": "error",
       "template-curly-spacing": ["error", "never"],
 
+      //"consistent-return": "error", // Enforces consistent return statements
+      "require-await": "error", // Disallows async functions which have no await expression
+
       // Enhance Readability
       "indent": ["warn", 2, { "SwitchCase": 1 }],
       "no-mixed-spaces-and-tabs": "warn",
